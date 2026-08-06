@@ -1,6 +1,20 @@
 # Vallox ESPHome component
 Vallox SE ventilation control software for ESPHome (and thus Home Assistant)
 
+> [!NOTE]
+> ### About this fork
+> [mickut/valloxesp](https://github.com/mickut/valloxesp) **+ one commit — nothing else.**
+>
+> - **All the heavy lifting is mickut's:** ESPHome 2026 compatibility, dropping `<Arduino.h>` (which is what makes `esp-idf` usable), and rewriting the UART into a non-blocking state machine with a prioritised send queue.
+> - **This fork adds a single fix:** custom fan modes are registered on the `Climate` entity instead of on `ClimateTraits` — deprecated in ESPHome 2026.5.0, **removed in 2026.11.0**. Behaviour unchanged.
+
+Builds with zero warnings on ESPHome 2026.7.3 / `esp32dev`, under both `arduino` and
+`esp-idf`. Running on a **Vallox ValloPlus 500 SE**.
+
+Not to be confused with [kotope/valloxesp](https://github.com/kotope/valloxesp), the
+original, which is unmaintained since May 2024 and no longer builds on current
+ESPHome. Migrating from it: `extra_func` removed, `switch_remaining` added.
+
 # Hardware
 See guide at https://www.creatingsmarthome.com/?p=73
 
